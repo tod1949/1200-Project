@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ISO15745Profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\XSD\GSDML-DeviceProfile-V2.4.xsd" xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile">
+    <ProfileHeader>
+        <ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+        <ProfileRevision>1.00</ProfileRevision>
+        <ProfileName>Device Profile for PROFINET Devices</ProfileName>
+        <ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+        <ProfileClassID>Device</ProfileClassID>
+        <ISO15745Reference>
+            <ISO15745Part>4</ISO15745Part>
+            <ISO15745Edition>1</ISO15745Edition>
+            <ProfileTechnology>GSDML</ProfileTechnology>
+        </ISO15745Reference>
+    </ProfileHeader>
+    <ProfileBody>
+        <DeviceIdentity VendorID="0x002A" DeviceID="0x10D">
+            <InfoText TextId="EmptyString" />
+            <VendorName Value="SIEMENS" />
+        </DeviceIdentity>
+        <DeviceFunction>
+            <Family MainFamily="PLCs" ProductFamily="CPU 1215C DC/DC/DC" />
+        </DeviceFunction>
+        <ApplicationProcess>
+            <DeviceAccessPointList>
+                <DeviceAccessPointItem ID="DAP1" DNS_CompatibleName="plcxbmiddle8677" PhysicalSlots="1" FixedInSlots="1" DeviceAccessSupported="true" NumberOfDeviceAccessAR="1" ModuleIdentNumber="0x452" ObjectUUID_LocalIndex="100" RequiredSchemaVersion="V2.31" MinDeviceInterval="32" MaxSupportedRecordSize="4068" NameOfStationNotTransferable="false" AddressAssignment="LOCAL" MultipleWriteSupported="true" LLDP_NoD_Supported="true" CheckDeviceID_Allowed="true" ResetToFactoryModes="2" PNIO_Version="V2.4">
+                    <ModuleInfo>
+                        <Name TextId="DAP_Name_ID" />
+                        <InfoText TextId="DAP_Description_ID" />
+                        <OrderNumber Value="6ES7 215-1AG40-0XB0" />
+                        <SoftwareRelease Value="V4.6" />
+                    </ModuleInfo>
+                    <CertificationInfo ConformanceClass="B" ApplicationClass="" NetloadClass="I" />
+                    <SubslotList>
+                        <SubslotItem SubslotNumber="32768" TextId="Interface_SubslotLabel" />
+                        <SubslotItem SubslotNumber="32769" TextId="Port32769_SubslotLabel" />
+                        <SubslotItem SubslotNumber="32770" TextId="Port32770_SubslotLabel" />
+                    </SubslotList>
+                    <IOConfigData MaxInputLength="1" MaxOutputLength="2" MaxDataLength="3" />
+                    <VirtualSubmoduleList>
+                        <VirtualSubmoduleItem SubmoduleIdentNumber="0x10000001" FixedInSubslots="1000" ID="VSM_2_1000" Writeable_IM_Records="1 2 3" MayIssueProcessAlarm="false">
+                            <IOData>
+                                <Output>
+                                    <DataItem Length="1" DataType="OctetString" TextId="VSM_2_1000" />
+                                </Output>
+                            </IOData>
+                            <ModuleInfo>
+                                <Name TextId="VSM_2_1000_Name" />
+                                <InfoText TextId="VSM_2_1000_Comment" />
+                            </ModuleInfo>
+                        </VirtualSubmoduleItem>
+                    </VirtualSubmoduleList>
+                    <SystemDefinedSubmoduleList>
+                        <InterfaceSubmoduleItem ID="Interface" SubslotNumber="32768" SubmoduleIdentNumber="0xf00" TextId="Interface" NetworkComponentDiagnosisSupported="true" ParameterizationDisallowed="true" SupportedProtocols="SNMP;LLDP" PTP_BoundarySupported="true" DCP_BoundarySupported="true" SupportedRT_Classes="RT_CLASS_1">
+                            <ApplicationRelations StartupMode="Advanced;Legacy" NumberOfAR="1">
+                                <TimingProperties PreferredSendClock="32" SendClock="32" ReductionRatio="1" ReductionRatioPow2="2 4 8 16 32 64 128 256 512" />
+                            </ApplicationRelations>
+                            <MediaRedundancy SupportedRole="Manager (Auto);Manager;Client" MaxMRP_Instances="1" AdditionalForwardingRulesSupported="true" />
+                        </InterfaceSubmoduleItem>
+                        <PortSubmoduleItem ID="Port_1" TextId="Port_1" SubslotNumber="32769" SubmoduleIdentNumber="0xf01" ParameterizationDisallowed="true" MAUTypes="16" PortDeactivationSupported="false" CheckMAUTypeSupported="true" SupportsRingportConfig="true" IsDefaultRingport="true" CheckMAUTypeDifferenceSupported="true">
+                            <MAUTypeList>
+                                <MAUTypeItem Value="16" AdjustSupported="true" />
+                            </MAUTypeList>
+                        </PortSubmoduleItem>
+                        <PortSubmoduleItem ID="Port_2" TextId="Port_2" SubslotNumber="32770" SubmoduleIdentNumber="0xf02" ParameterizationDisallowed="true" MAUTypes="16" PortDeactivationSupported="false" CheckMAUTypeSupported="true" SupportsRingportConfig="true" IsDefaultRingport="true" CheckMAUTypeDifferenceSupported="true">
+                            <MAUTypeList>
+                                <MAUTypeItem Value="16" AdjustSupported="true" />
+                            </MAUTypeList>
+                        </PortSubmoduleItem>
+                    </SystemDefinedSubmoduleList>
+                </DeviceAccessPointItem>
+            </DeviceAccessPointList>
+            <ExternalTextList>
+                <PrimaryLanguage>
+                    <Text TextId="EmptyString" Value="" />
+                    <Text TextId="Interface_SubslotLabel" Value="X1" />
+                    <Text TextId="Port32769_SubslotLabel" Value="Port1" />
+                    <Text TextId="Port32770_SubslotLabel" Value="Port2" />
+                    <Text TextId="DAP_Name_ID" Value="PLC_Middle20250807-1141" />
+                    <Text TextId="DAP_Description_ID" Value="200 KB 工作存储器；24VDC 电源，板载 DI14 x 24VDC 漏型/源型，板载 DQ10 x 24VDC、AI2 和 AQ2；板载 6 个高速计数器和 4 路脉冲输出；信号板扩展板载式 I/O；多达 3 个可进行串行通信的通信模块；多达 8 个可用于 I/O 扩展的信号模块；PROFINET IO 控制器，双端口，智能设备，TCP/IP 传输协议，开放式用户安全通信，S7 通信，Web 服务器，OPC UA：服务器 DA" />
+                    <Text TextId="Interface" Value="Interface" />
+                    <Text TextId="Port_1" Value="Port 1" />
+                    <Text TextId="Port_2" Value="Port 2" />
+                    <Text TextId="VSM_2_1000_Name" Value="write_put" />
+                    <Text TextId="VSM_2_1000_Comment" Value="" />
+                    <Text TextId="VSM_2_1000" Value="VSM_2_1000" />
+                </PrimaryLanguage>
+            </ExternalTextList>
+        </ApplicationProcess>
+    </ProfileBody>
+</ISO15745Profile>

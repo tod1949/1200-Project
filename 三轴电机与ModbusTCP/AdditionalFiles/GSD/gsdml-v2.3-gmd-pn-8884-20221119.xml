@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\xsd\GSDML-DeviceProfile-V2.3.xsd">
+  <ProfileHeader>
+    <ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+    <ProfileRevision>1.00</ProfileRevision>
+    <ProfileName>Device Profile for PROFINET Devices</ProfileName>
+    <ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+    <ProfileClassID>Device</ProfileClassID>
+    <ISO15745Reference>
+      <ISO15745Part>4</ISO15745Part>
+      <ISO15745Edition>1</ISO15745Edition>
+      <ProfileTechnology>GSDML</ProfileTechnology>
+    </ISO15745Reference>
+  </ProfileHeader>
+  <ProfileBody>
+    <DeviceIdentity VendorID="0xefff" DeviceID="0x5401">
+      <InfoText TextId="ProfiNet IO module" />
+      <VendorName Value="Gaomaide.com" />
+    </DeviceIdentity>
+    <DeviceFunction>
+      <Family MainFamily="I/O" ProductFamily="Gaomaide" />
+    </DeviceFunction>
+    <ApplicationProcess>
+      <DeviceAccessPointList>
+        <DeviceAccessPointItem ID="00052" PhysicalSlots="0..3" ModuleIdentNumber="0x5401" MinDeviceInterval="32" ImplementationType="PN-IO" DNS_CompatibleName="pn-io" FixedInSlots="0" ObjectUUID_LocalIndex="1" PowerOnToCommReady="0" ParameterizationSpeedupSupported="true" MultipleWriteSupported="false" DeviceAccessSupported="true" NameOfStationNotTransferable="true" PNIO_Version="V2.1">
+          <!-- TBD: Set PNIO_Version to the PROFINET IO version that this device is based on -->
+          <ModuleInfo>
+            <Name TextId="PN-IO" />
+            <InfoText TextId="InfoText" />
+            <Family MainFamily="I/O" ProductFamily="IC1" />
+            <VendorName Value="Gaomaide.com" />
+            <OrderNumber Value="00052" />
+            <HardwareRelease Value="V1" />
+            <SoftwareRelease Value="V1" />
+          </ModuleInfo>
+          <SubslotList>
+            <SubslotItem SubslotNumber="32768" TextId="IDT_SS_Interface" />
+            <SubslotItem SubslotNumber="32769" TextId="IDT_SS_Port1" />
+            <SubslotItem SubslotNumber="32770" TextId="IDT_SS_Port2" />
+          </SubslotList>
+          <IOConfigData MaxInputLength="100" MaxOutputLength="100" />
+          <UseableModules>
+            <ModuleItemRef ModuleItemTarget="DIO" FixedInSlots="1" />
+            <ModuleItemRef ModuleItemTarget="AI" FixedInSlots="2" />
+            <ModuleItemRef ModuleItemTarget="PWM" FixedInSlots="3" />
+          </UseableModules>
+          <SystemDefinedSubmoduleList>
+            <InterfaceSubmoduleItem ID="Subitem_1" SupportedRT_Class="Class1" SupportedProtocols="LLDP" SupportedMibs="MIB2" NetworkComponentDiagnosisSupported="true" SubslotNumber="32768" TextId="Modue_Name_1" SubmoduleIdentNumber="0x00000002">
+              <ApplicationRelations>
+                <TimingProperties SendClock="32 64 128" />
+              </ApplicationRelations>
+            </InterfaceSubmoduleItem>
+            <PortSubmoduleItem ID="Subitem_1a" SubslotNumber="32769" MaxPortRxDelay="350" MaxPortTxDelay="158" LinkStateDiagnosisCapability="Up+Down" TextId="IDT_Port1" SubmoduleIdentNumber="0x00000003" MAUType="100BASETXFD" />
+            <PortSubmoduleItem ID="Subitem_1b" SubslotNumber="32770" MaxPortRxDelay="350" MaxPortTxDelay="158" LinkStateDiagnosisCapability="Up+Down" TextId="IDT_Port2" SubmoduleIdentNumber="0x00000004" MAUType="100BASETXFD" />
+          </SystemDefinedSubmoduleList>
+          <Graphics>
+            <GraphicItemRef Type="DeviceSymbol" GraphicItemTarget="1" />
+          </Graphics>
+        </DeviceAccessPointItem>
+      </DeviceAccessPointList>
+      <ModuleList>
+        <ModuleItem ID="DIO" ModuleIdentNumber="0x05">
+          <ModuleInfo>
+            <Name TextId="DIO_Text" />
+            <InfoText TextId="DIO Module." />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="DIO" SubmoduleIdentNumber="0x05">
+              <IOData IOPS_Length="1" IOCS_Length="1" >
+                <Input>
+                  <DataItem DataType="OctetString" Length="1" UseAsBits="true" TextId="DI" />
+                </Input>
+                <Output>
+                  <DataItem DataType="OctetString" Length="1" UseAsBits="true" TextId="DO" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="DIO_Text" />
+                <InfoText TextId="DIO Module." />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="AI" ModuleIdentNumber="0x06">
+          <ModuleInfo>
+            <Name TextId="AI_Text" />
+            <InfoText TextId="AI Module." />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="AI" SubmoduleIdentNumber="0x06">
+              <IOData IOPS_Length="1" IOCS_Length="1">
+                <Input>
+                  <DataItem DataType="OctetString" Length="16" UseAsBits="false" TextId="AI" />
+                </Input>
+              </IOData>
+              <RecordDataList>
+                <ParameterRecordDataItem Index="17" Length="1" TransferSequence="1">
+                  <Name TextId="Parameters" />
+	<Const Data="0x08" />
+	<Ref TextId="Slide" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="0" Changeable="true" AllowedValues="1..32" DefaultValue="1"/>
+	</ParameterRecordDataItem>
+              </RecordDataList>     
+              <ModuleInfo>
+                <Name TextId="AI_Text" />
+                <InfoText TextId="AI Module." />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="PWM" ModuleIdentNumber="0x07">
+          <ModuleInfo>
+            <Name TextId="PWM_Text" />
+            <InfoText TextId="PWM Module." />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="PWM" SubmoduleIdentNumber="0x07">
+              <IOData IOPS_Length="1" IOCS_Length="1" >
+                <Output>
+                  <DataItem DataType="OctetString" Length="8" UseAsBits="false" TextId="PWM" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="PWM_Text" />
+                <InfoText TextId="PWM Module." />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+      </ModuleList>   
+      <GraphicsList>
+        <GraphicItem ID="1" GraphicFile="GSDML-GMD-PIC" />
+      </GraphicsList>
+            <CategoryList>
+                <CategoryItem ID="V1.0" TextId="V1.0"/>
+            </CategoryList>      
+      <ExternalTextList>
+        <PrimaryLanguage>
+          <!--Product identification-->
+
+   	<Text TextId="Parameters" Value="Parameters"   />
+          <Text TextId="Slide" Value="Slide Window(1-32)" />
+
+          <Text TextId="DIO" Value="DIO" />
+          <Text TextId="DIO Module." Value="DIO Module." />
+          <Text TextId="DIO_Text" Value="DIOs" />
+          <Text TextId="DI" Value="DI16" />
+          <Text TextId="DO" Value="DO16" />
+
+          <Text TextId="PWM" Value="PWM" />
+          <Text TextId="PWM Module." Value="PWM Module." />
+          <Text TextId="PWM_Text" Value="PWMs" />
+
+          <Text TextId="AI" Value="AI" />
+          <Text TextId="AI_Text" Value="AIs" />
+          <Text TextId="AI Module." Value="AI Module." />
+
+          <Text TextId="PN-IO" Value="PN-8884" />
+          <Text TextId="Modue_Name_1" Value="PN-UART Name1" />          
+          <Text TextId="ProfiNet IO module" Value="ProfiNet IO module" />
+          <Text TextId="InfoText" Value="InfoText" />
+          <!--Modules categories-->
+          <Text TextId="V1.0" Value="V1.0" />
+          <!--Modules-->
+          <!--Submodules-->
+          <Text TextId="IDT_SS_Interface" Value="X1" />
+          <Text TextId="IDT_SS_Port1" Value="X1 P1" />
+          <Text TextId="IDT_SS_Port2" Value="X1 P2" />
+          <Text TextId="IDT_Port1" Value="Port 1" />
+          <Text TextId="IDT_Port2" Value="Port 2" />
+
+                    
+        </PrimaryLanguage>
+      </ExternalTextList>
+    </ApplicationProcess>
+  </ProfileBody>
+</ISO15745Profile>
